@@ -11,7 +11,11 @@ load_dotenv()
 PINECONE_API_KEY=os.environ.get('PINECONE_API_KEY')
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 
-
+# extracted_data = load_pdf_file(data = 'Data/')
+#rerun the above line to load the pdf files again if cache is cleared
+# import joblib
+# joblib.dump(extracted_data, 'cached_data.joblib')
+#for caching the data
 extracted_data = joblib.load('cached_data.joblib')
 text_chunks=text_split(extracted_data)
 embeddings = download_embedding_model()
